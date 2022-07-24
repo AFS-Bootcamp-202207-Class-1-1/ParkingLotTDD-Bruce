@@ -21,7 +21,23 @@ public class SmartParkBoy {
     }
 
     public ParkingTicket park(Car car) {
-        return parkingLots.get(0).park(car);
+
+            ParkingTicket parkingTicket=null;
+            for (int i=0;i<parkingLots.size();i++) {
+                try{
+                   parkingTicket= parkingLots.get(i).park(car);
+                }
+                catch (NoAvailablePositionException e)
+                {
+                    if(i==parkingLots.size()-1)
+                        throw e;
+                }
+                finally {
+                    if(parkingTicket!=null)
+                        return parkingTicket;
+                }
+            }
+            return parkingTicket;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
