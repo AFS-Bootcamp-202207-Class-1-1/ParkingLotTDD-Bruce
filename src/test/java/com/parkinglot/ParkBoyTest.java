@@ -2,6 +2,8 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -75,5 +77,16 @@ public class ParkBoyTest {
         // when & then
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(parkingTicket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
+    }
+    @Test
+    public void should_throw_exception_with_error_message_when_park_given_a_parkingBoy_with_no_available_position_and_a_car() {
+        // given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        IntStream.range(0,10).forEach(i->
+                parkingBoy.park(new Car())
+        );
+        // when & then
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> parkingBoy.park(new Car()));
+        assertEquals("No available position.", exception.getMessage());
     }
 }
