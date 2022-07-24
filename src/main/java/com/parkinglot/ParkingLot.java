@@ -8,6 +8,11 @@ public class ParkingLot {
     private Map<ParkingTicket, Car> parkedPositions;
     private int capacity;
 
+    public int getEmptyPosition()
+    {
+        return this.capacity-this.parkedPositions.size();
+    }
+
     public ParkingLot() {
         this(DEFAULT_CAPACITY);
     }

@@ -2,6 +2,7 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -84,5 +85,20 @@ class SmartParkingBoyTest {
         // when & then
         Exception exception = assertThrows(NoAvailablePositionException.class, () -> SmartParkingBoy.park(new Car()));
         assertEquals("No available position.", exception.getMessage());
+    }
+    @Test
+    public void should_park_parkingLot_more_empty_positions_with_when_park_given_a_SmartParkBoy_with_two_parkLot_and_a_car() {
+        // given
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLotWithThreePosition = new ParkingLot(3);
+        parkingLots.add(parkingLotWithThreePosition);
+        parkingLots.add(new ParkingLot(1));
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Car car = new Car();
+        //when
+        ParkingTicket parkingTicket = smartParkingBoy.park(car);
+        //excepted
+        assertEquals(car,parkingLotWithThreePosition.fetch(parkingTicket));
+
     }
 }
