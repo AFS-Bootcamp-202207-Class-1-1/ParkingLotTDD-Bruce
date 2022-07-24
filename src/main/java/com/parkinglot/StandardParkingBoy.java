@@ -7,15 +7,15 @@ import java.util.List;
  * @author darksheep
  * @date 2022/07/24/ 21:15
  */
-public class SmartParkBoy {
+public class StandardParkingBoy {
 
     private List<ParkingLot> parkingLots=new ArrayList<>();
 
-    public SmartParkBoy(List<ParkingLot> parkingLots) {
+    public StandardParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
-    public SmartParkBoy() {
+    public StandardParkingBoy() {
       this.parkingLots.add( new ParkingLot(2));
       this.parkingLots.add( new ParkingLot(3));
     }
