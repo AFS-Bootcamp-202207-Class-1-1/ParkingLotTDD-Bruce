@@ -13,6 +13,11 @@ public class ParkingLot {
         return this.capacity-this.parkedPositions.size();
     }
 
+    public double getPositionRate()
+    {
+        return ((double)getEmptyPosition())/this.capacity;
+    }
+
     public ParkingLot() {
         this(DEFAULT_CAPACITY);
     }
