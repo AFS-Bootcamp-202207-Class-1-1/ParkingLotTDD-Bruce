@@ -35,9 +35,9 @@ class SmartParkingBoyTest {
         assertEquals(car, fetchedCar);
     }
     @Test
-    public void should_return_right_car_with_each_ticket_when_fetch_twice_given_a_StandardParkBoy_with_two_parked_car_and_two_parking_ticket() {
+    public void should_return_right_car_with_each_ticket_when_fetch_twice_given_a_SmartParkBoy_with_two_parked_car_and_two_parking_ticket() {
         // given
-        StandardParkingBoy parkingBoy = new StandardParkingBoy();
+        SmartParkingBoy parkingBoy = new SmartParkingBoy();
         Car carA = new Car();
         Car carB = new Car();
         ParkingTicket parkingTicketA = parkingBoy.park(carA);
