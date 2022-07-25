@@ -40,4 +40,17 @@ public class SuperSmartParkingBoyTest {
         // then
         assertNotNull(parkingTicket);
     }
+    @Test
+    public void should_return_parked_car_when_fetch_given_a_SuperSmartParkBoy_with_a_parked_car_and_a_parking_ticket() {
+        // given
+        SuperSmartParkingBoy parkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+
+        // when
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
+
+        // then
+        assertEquals(car, fetchedCar);
+    }
 }
