@@ -79,4 +79,15 @@ public class SuperSmartParkingBoyTest {
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> SuperSmartParkingBoy.fetch(unrecognizedParkingTicket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
+    @Test
+    public void should_throw_exception_with_error_message_when_fetch_given_a_SuperSmartParkBoy_and_a_used_parking_ticket() {
+        // given
+        SuperSmartParkingBoy SuperSmartParkingBoy = new SuperSmartParkingBoy();
+        ParkingTicket parkingTicket = SuperSmartParkingBoy.park(new Car());
+        SuperSmartParkingBoy.fetch(parkingTicket);
+
+        // when & then
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> SuperSmartParkingBoy.fetch(parkingTicket));
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
+    }
 }
