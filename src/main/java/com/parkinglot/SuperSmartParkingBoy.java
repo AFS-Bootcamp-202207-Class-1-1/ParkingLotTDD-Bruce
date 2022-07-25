@@ -6,7 +6,7 @@ import java.util.Comparator;
  * @author darksheep
  * @date 2022/07/24/ 23:41
  */
-public class SuperSmartBoy extends StandardParkingBoy {
+public class SuperSmartParkingBoy extends StandardParkingBoy {
     @Override
     public ParkingTicket park(Car car) {
         ParkingLot parkingLot = getParkingLots().stream().max(Comparator.comparingDouble(ParkingLot::getPositionRate)).get();

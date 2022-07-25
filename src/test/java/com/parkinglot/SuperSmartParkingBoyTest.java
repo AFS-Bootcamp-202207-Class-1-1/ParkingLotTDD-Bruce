@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-/**
- * @author darksheep
- * @date 2022/07/24/ 23:41
- */
-public class SuperSmartBoyTest {
+
+public class SuperSmartParkingBoyTest {
     @Test
     public void should_park_parkingLot_higher_positionRate_with_when_park_given_a_SmartParkBoy_with_two_parkLot_and_a_car() {
         // given
