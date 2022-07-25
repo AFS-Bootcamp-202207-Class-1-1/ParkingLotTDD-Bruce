@@ -72,33 +72,33 @@ public class SuperSmartParkingBoyTest {
     @Test
     public void should_throw_exception_with_error_message_when_fetch_given_a_SuperSmartParkBoy_and_an_unrecognized_parking_ticket() {
         // given
-        SuperSmartParkingBoy SuperSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
         ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
 
         // when & then
-        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> SuperSmartParkingBoy.fetch(unrecognizedParkingTicket));
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> superSmartParkingBoy.fetch(unrecognizedParkingTicket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
     @Test
     public void should_throw_exception_with_error_message_when_fetch_given_a_SuperSmartParkBoy_and_a_used_parking_ticket() {
         // given
-        SuperSmartParkingBoy SuperSmartParkingBoy = new SuperSmartParkingBoy();
-        ParkingTicket parkingTicket = SuperSmartParkingBoy.park(new Car());
-        SuperSmartParkingBoy.fetch(parkingTicket);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        ParkingTicket parkingTicket = superSmartParkingBoy.park(new Car());
+        superSmartParkingBoy.fetch(parkingTicket);
 
         // when & then
-        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> SuperSmartParkingBoy.fetch(parkingTicket));
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> superSmartParkingBoy.fetch(parkingTicket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
     @Test
     public void should_throw_exception_with_error_message_when_park_given_a_SuperSmartParkBoy_with_no_available_position_and_a_car() {
         // given
-        SuperSmartParkingBoy SuperSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
         IntStream.range(0,5).forEach(i->
-                SuperSmartParkingBoy.park(new Car())
+                superSmartParkingBoy.park(new Car())
         );
         // when & then
-        Exception exception = assertThrows(NoAvailablePositionException.class, () -> SuperSmartParkingBoy.park(new Car()));
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> superSmartParkingBoy.park(new Car()));
         assertEquals("No available position.", exception.getMessage());
     }
 }
