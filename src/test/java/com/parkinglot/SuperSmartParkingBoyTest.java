@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class SuperSmartParkingBoyTest {
@@ -69,5 +68,15 @@ public class SuperSmartParkingBoyTest {
         // then
         assertEquals(carA, firstFetchedCar);
         assertEquals(carB, secondFetchedCar);
+    }
+    @Test
+    public void should_throw_exception_with_error_message_when_fetch_given_a_SuperSmartParkBoy_and_an_unrecognized_parking_ticket() {
+        // given
+        SuperSmartParkingBoy SuperSmartParkingBoy = new SuperSmartParkingBoy();
+        ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
+
+        // when & then
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> SuperSmartParkingBoy.fetch(unrecognizedParkingTicket));
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 }
